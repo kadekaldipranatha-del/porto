@@ -1,0 +1,831 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri — I Kadek Aldi Pranatha | S1 Sistem Informasi</title>
+    <meta name="description" content="Biodata dan Profil Mahasiswa Jurusan Sistem Informasi - I Kadek Aldi Pranatha.">
+
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon SVG -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23000000' stroke='%23ffffff' stroke-width='4'/><text x='50' y='64' font-size='42' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>SI</text></svg>">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Enhancements for real profile photo display */
+        .avatar-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--bg-pure-black, #000);
+            background-color: var(--bg-surface, #141417);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-box:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-photo-real {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-card:hover .gallery-photo-real {
+            transform: scale(1.05);
+        }
+
+        .status-pill {
+            z-index: 2;
+        }
+
+        /* ================= MUSIC PLAYER STYLES ================= */
+        .floating-player {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(18, 18, 226, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(164, 20, 20, 0.12);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06);
+            padding: 10px 16px;
+            border-radius: 40px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 380px;
+            user-select: none;
+        }
+
+        .floating-player:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 16px 44px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Vinyl Disc */
+        .disc-wrapper {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: conic-gradient(#27272a, #09090b, #3f3f46, #18181b, #27272a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            flex-shrink: 0;
+            border: 1px solid #3f3f46;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .disc-wrapper:hover {
+            transform: scale(1.06);
+        }
+
+        .disc-wrapper.playing {
+            animation: spinDisc 4s linear infinite;
+        }
+
+        @keyframes spinDisc {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .disc-center {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #09090b;
+        }
+
+        /* Track Metadata */
+        .player-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 130px;
+            max-width: 155px;
+        }
+
+        .player-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+
+        .player-artist {
+            font-size: 10px;
+            color: #a1a1aa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: var(--font-mono);
+        }
+
+        /* Equalizer Wave */
+        .equalizer {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 12px;
+            margin-top: 2px;
+        }
+
+        .eq-bar {
+            width: 3px;
+            background: #22c55e;
+            border-radius: 1px;
+            height: 3px;
+            transition: height 0.15s ease;
+        }
+
+        .playing .eq-bar:nth-child(1) {
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+        }
+
+        .playing .eq-bar:nth-child(2) {
+            animation: eqBounce 0.6s ease-in-out infinite alternate 0.2s;
+        }
+
+        .playing .eq-bar:nth-child(3) {
+            animation: eqBounce 0.9s ease-in-out infinite alternate 0.4s;
+        }
+
+        .playing .eq-bar:nth-child(4) {
+            animation: eqBounce 0.7s ease-in-out infinite alternate 0.1s;
+        }
+
+        @keyframes eqBounce {
+            0% {
+                height: 3px;
+            }
+
+            100% {
+                height: 12px;
+            }
+        }
+
+        /* Controls */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-ctrl {
+            background: none;
+            border: none;
+            color: #d4d4d8;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-ctrl:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-play-main {
+            width: 34px;
+            height: 34px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            font-size: 13px;
+            box-shadow: 0 0 14px rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-play-main:hover {
+            background: #f4f4f5;
+            color: #000000;
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Minimize / Maximize Button */
+        .btn-minimize {
+            color: #71717a;
+            font-size: 14px;
+            margin-left: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-minimize:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Minimized State (Floating Disc Bubble) */
+        .floating-player.minimized {
+            padding: 4px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: rgba(18, 18, 22, 0.95);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.8), 0 0 16px rgba(34, 197, 94, 0.25);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: scale(1);
+        }
+
+        .floating-player.minimized:hover {
+            transform: scale(1.14);
+            border-color: #22c55e;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9), 0 0 24px rgba(34, 197, 94, 0.5);
+        }
+
+        .floating-player.minimized .player-info,
+        .floating-player.minimized .btn-prev,
+        .floating-player.minimized .btn-next,
+        .floating-player.minimized .btn-minimize {
+            display: none;
+        }
+
+        /* Minimized Expand Badge Indicator */
+        .minimized-badge {
+            display: none;
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #22c55e;
+            color: #000000;
+            font-size: 9px;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #000000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-player.minimized .minimized-badge {
+            display: flex;
+        }
+
+        /* Auto-play hint banner */
+        .music-toast-hint {
+            position: fixed;
+            bottom: 84px;
+            right: 24px;
+            z-index: 999;
+            background: rgba(24, 24, 27, 0.95);
+            border: 1px solid #3f3f46;
+            color: #e4e4e7;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            animation: fadeInHint 0.5s ease;
+        }
+
+        @keyframes fadeInHint {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .floating-player:not(.minimized) {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                max-width: none;
+                justify-content: space-between;
+            }
+
+            .player-info {
+                max-width: 140px;
+            }
+
+            .music-toast-hint {
+                bottom: 76px;
+                right: 16px;
+                left: 16px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page-wrapper">
+        <div class="bio-card">
+
+            <!-- HEADER & FOTO PROFIL -->
+            <header class="card-header">
+                <div class="avatar-container">
+                    <div class="avatar-ring">
+                        <!-- Foto Profil Asli -->
+                        <div class="avatar-box">
+                            <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" class="avatar-img" />
+                        </div>
+                    </div>
+                    <span class="status-pill">Mahasiswa Baru</span>
+                </div>
+
+                <h1 class="main-name">I Kadek Aldi Pranatha</h1>
+                <p class="nickname">Nama Panggilan: <span class="highlight-text">"Aldi"</span></p>
+                <p class="study-badge">S1 Sistem Informasi</p>
+            </header>
+
+            <!-- SEKSI 1: BIODATA UTAMA -->
+            <section class="section-box">
+                <h2 class="section-title">
+                    <span class="title-icon">📋</span>
+                    <span>Biodata & Informasi Mahasiswa</span>
+                </h2>
+
+                <div class="data-list">
+                    <div class="data-row">
+                        <span class="data-label">Nama Lengkap</span>
+                        <span class="data-val">I Kadek Aldi Pranatha</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Nama Panggilan</span>
+                        <span class="data-val">Aldi</span>
+                    </div>
+
+                    <div class="data-row highlight-row">
+                        <span class="data-label">Nomor Induk Mahasiswa (NIM)</span>
+                        <span class="data-val mono-text">2615091068</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Program Studi</span>
+                        <span class="data-val">S1 Sistem Informasi</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">No. Urut Kelompok</span>
+                        <span class="data-val mono-text">12</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Nama Kelompok</span>
+                        <span class="data-val">Logic</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Asal Sekolah</span>
+                        <span class="data-val">SMAN 4 Singaraja</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Alamat Asal</span>
+                        <span class="data-val">Jalan I Gede Taman No 27, Buleleng</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Hobi</span>
+                        <span class="data-val">Bermain Game, Mendengarkan Musik, Sepak Bola</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEKSI 2: ALASAN MEMILIH SISTEM INFORMASI & CITA-CITA -->
+            <section class="section-box">
+                <h2 class="section-title">
+                    <span class="title-icon">💡</span>
+                    <span>Alasan Memilih Jurusan & Cita-cita</span>
+                </h2>
+
+                <div class="essay-box">
+                    <h3 class="essay-subtitle">Alasan Memilih Jurusan Sistem Informasi:</h3>
+                    <p class="essay-paragraph">
+                        Saya memilih jurusan Sistem Informasi karena memiliki ketertarikan mendalam terhadap bagaimana
+                        teknologi informasi dan komputasi dapat memecahkan berbagai permasalahan nyata di masyarakat
+                        serta mendukung kebutuhan bisnis modern.
+                        Perkembangan pesat di bidang rekayasa perangkat lunak, sistem data, dan arsitektur digital
+                        membuka peluang
+                        besar untuk terus berinovasi dan berkontribusi secara konkret di era transformasi digital.
+                    </p>
+                </div>
+
+                <div class="essay-box" style="margin-top: 14px;">
+                    <h3 class="essay-subtitle">Cita-cita:</h3>
+                    <div class="goal-item">
+                        <span class="goal-star">🎯</span>
+                        <span class="goal-text">Menjadi seorang <strong>Senior Software Engineer & Information Systems
+                                Specialist</strong> yang mampu
+                            membangun sistem teknologi berdaya guna tinggi di tingkat global.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEKSI 3: GALERI FOTO (MINIMAL 3 FOTO DIRI & KEGIATAN SOPAN) -->
+            <section class="section-box">
+                <h2 class="section-title">
+                    <span class="title-icon">📷</span>
+                    <span>Galeri Foto Kegiatan & Foto Diri</span>
+                </h2>
+                <p class="section-hint">Dokumentasi foto diri sopan, rapi, dan kegiatan akademik.</p>
+
+                <div class="gallery-grid">
+                    <!-- Foto 1: Foto Diri -->
+                    <div class="gallery-card">
+                        <div class="photo-box">
+                            <img src="profile.jpg" alt="Foto Diri I Kadek Aldi Pranatha" class="gallery-photo-real" />
+                            <span class="photo-badge">Foto 1</span>
+                        </div>
+                        <div class="photo-caption">
+                            <h4>Foto Diri</h4>
+                            <p>Dokumentasi foto diri rapi dan sopan untuk profil akademik.</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2: Akademik & Belajar -->
+                    <div class="gallery-card">
+                        <div class="photo-box">
+                            <svg viewBox="0 0 300 220" width="100%" height="100%" class="photo-svg">
+                                <rect width="100%" height="100%" fill="#121215" />
+                                <!-- Laptop & Study setting -->
+                                <rect x="50" y="70" width="200" height="100" rx="6" fill="#1e1e24" stroke="#3f3f46" />
+                                <rect x="65" y="80" width="170" height="70" rx="3" fill="#000000" />
+                                <text x="75" y="110" fill="#22c55e" font-size="12" font-family="monospace">&gt; Hello
+                                    World_</text>
+                                <text x="75" y="130" fill="#71717a" font-size="10" font-family="monospace">Information
+                                    Systems &amp; Coding</text>
+                                <path d="M30 170 L270 170 L250 180 L50 180 Z" fill="#27272a" />
+                            </svg>
+                            <span class="photo-badge">Foto 2</span>
+                        </div>
+                        <div class="photo-caption">
+                            <h4>Kegiatan Akademik & Belajar</h4>
+                            <p>Sesi belajar mandiri, pemrograman, dan eksplorasi materi perkuliahan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3: Kolaborasi & Tim -->
+                    <div class="gallery-card">
+                        <div class="photo-box">
+                            <svg viewBox="0 0 300 220" width="100%" height="100%" class="photo-svg">
+                                <rect width="100%" height="100%" fill="#121215" />
+                                <!-- Group / Workshop representation -->
+                                <circle cx="90" cy="90" r="26" fill="#27272a" stroke="#3f3f46" />
+                                <circle cx="150" cy="80" r="30" fill="#3f3f46" stroke="#52525b" />
+                                <circle cx="210" cy="90" r="26" fill="#27272a" stroke="#3f3f46" />
+                                <path d="M60 170 C60 135, 75 130, 90 130 C105 130, 120 135, 120 170 Z" fill="#71717a" />
+                                <path d="M110 170 C110 125, 130 120, 150 120 C170 120, 190 125, 190 170 Z"
+                                    fill="#e4e4e7" />
+                                <path d="M180 170 C180 135, 195 130, 210 130 C225 130, 240 135, 240 170 Z"
+                                    fill="#71717a" />
+                            </svg>
+                            <span class="photo-badge">Foto 3</span>
+                        </div>
+                        <div class="photo-caption">
+                            <h4>Kegiatan Organisasi / Kelompok</h4>
+                            <p>Diskusi kelompok, seminar teknologi, dan kolaborasi tim.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEKSI 4: TAUTAN & KONTAK AKTIF -->
+            <section class="section-box" style="border-bottom: none;">
+                <h2 class="section-title">
+                    <span class="title-icon">🔗</span>
+                    <span>Tautan & Kontak Aktif</span>
+                </h2>
+
+                <div class="contact-grid">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/6287860117307" target="_blank" rel="noopener noreferrer"
+                        class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-info">
+                            <span class="contact-title">WhatsApp</span>
+                            <span class="contact-sub">+62 878-6011-7307</span>
+                        </div>
+                        <span class="contact-arrow">↗</span>
+                    </a>
+
+                    <!-- Email -->
+                    <div class="contact-card" id="copy-email-box" title="Klik untuk menyalin email">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-info">
+                            <span class="contact-title">Email</span>
+                            <span class="contact-sub" id="email-address">kadekaldipranatha@gmail.com</span>
+                        </div>
+                        <span class="contact-badge" id="copy-status">Salin</span>
+                    </div>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/pranath444" target="_blank" rel="noopener noreferrer"
+                        class="contact-card">
+                        <div class="contact-icon">📸</div>
+                        <div class="contact-info">
+                            <span class="contact-title">Instagram</span>
+                            <span class="contact-sub">@pranath444</span>
+                        </div>
+                        <span class="contact-arrow">↗</span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/kadekaldipranatha" target="_blank" rel="noopener noreferrer"
+                        class="contact-card">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-info">
+                            <span class="contact-title">LinkedIn</span>
+                            <span class="contact-sub">linkedin.com/in/kadekaldipranatha</span>
+                        </div>
+                        <span class="contact-arrow">↗</span>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/kadekaldipranatha" target="_blank" rel="noopener noreferrer"
+                        class="contact-card">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-info">
+                            <span class="contact-title">GitHub</span>
+                            <span class="contact-sub">github.com/kadekaldipranatha</span>
+                        </div>
+                        <span class="contact-arrow">↗</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="card-footer">
+                <p>© 2026 — <strong>I Kadek Aldi Pranatha</strong> | S1 Sistem Informasi</p>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- FLOATING MUSIC PLAYER WIDGET -->
+    <div id="musicToastHint" class="music-toast-hint">
+        <span>🎵</span>
+        <span>Klik tombol putar untuk mendengarkan lagu!</span>
+    </div>
+
+    <div class="floating-player" id="musicPlayer" title="Pemutar Musik">
+        <!-- Minimized expand badge -->
+        <div class="minimized-badge">🗖</div>
+
+        <!-- Rotating Disc -->
+        <div class="disc-wrapper" id="discWrapper" title="Putar / Jeda">
+            <div class="disc-center"></div>
+        </div>
+
+        <!-- Track Info & Visualizer -->
+        <div class="player-info">
+            <span class="player-title" id="playerTitle">Langkah Baru Ganesha Muda</span>
+            <span class="player-artist" id="playerArtist">Jingle PKKMB Undiksha</span>
+            <div class="equalizer" id="equalizer">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="player-controls">
+            <button class="btn-ctrl btn-prev" id="btnPrev" title="Lagu Sebelumnya">⏮</button>
+            <button class="btn-ctrl btn-play-main" id="btnPlay" title="Putar / Jeda">▶</button>
+            <button class="btn-ctrl btn-next" id="btnNext" title="Lagu Selanjutnya">⏭</button>
+            <button class="btn-ctrl btn-minimize" id="btnMin" title="Perkecil Pemutar Musik">─</button>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="bgAudio" preload="metadata"></audio>
+
+    <!-- Floating Notification Toast -->
+    <div id="toast" class="toast hidden">Alamat email berhasil disalin!</div>
+
+    <script>
+        // ================= COPY EMAIL FEATURE =================
+        const copyBox = document.getElementById('copy-email-box');
+        const emailText = document.getElementById('email-address').innerText;
+        const copyStatus = document.getElementById('copy-status');
+        const toast = document.getElementById('toast');
+
+        copyBox.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailText);
+                copyStatus.innerText = 'Tersalin!';
+                copyStatus.style.background = '#22c55e';
+                copyStatus.style.color = '#000000';
+
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    copyStatus.innerText = 'Salin';
+                    copyStatus.style.background = '';
+                    copyStatus.style.color = '';
+                }, 2500);
+            } catch (err) {
+                alert('Email: ' + emailText);
+            }
+        });
+
+        // ================= MUSIC PLAYER LOGIC =================
+        const playlist = [
+            {
+                title: "Langkah Baru Ganesha Muda",
+                artist: "Jingle PKKMB Undiksha",
+                src: "song1.mp3"
+            },
+            {
+                title: "Kuning",
+                artist: "rumahsakit",
+                src: "song2.mp3"
+            },
+            {
+                title: "2112",
+                artist: "Reality Club",
+                src: "song3.mp3"
+            }
+        ];
+
+        let currentTrackIndex = 0;
+        const audio = document.getElementById('bgAudio');
+        const btnPlay = document.getElementById('btnPlay');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const btnMin = document.getElementById('btnMin');
+        const discWrapper = document.getElementById('discWrapper');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerArtist = document.getElementById('playerArtist');
+        const musicPlayer = document.getElementById('musicPlayer');
+        const musicHint = document.getElementById('musicToastHint');
+
+        function loadTrack(index) {
+            currentTrackIndex = index;
+            const track = playlist[currentTrackIndex];
+            audio.src = track.src;
+            playerTitle.innerText = track.title;
+            playerArtist.innerText = track.artist;
+        }
+
+        // Initialize first track
+        loadTrack(0);
+
+        function playMusic() {
+            audio.play().then(() => {
+                btnPlay.innerText = '⏸';
+                discWrapper.classList.add('playing');
+                musicPlayer.classList.add('playing');
+                if (musicHint) musicHint.style.display = 'none';
+            }).catch((err) => {
+                console.log('Autoplay blocked or waiting for user interaction:', err);
+            });
+        }
+
+        function pauseMusic() {
+            audio.pause();
+            btnPlay.innerText = '▶';
+            discWrapper.classList.remove('playing');
+            musicPlayer.classList.remove('playing');
+        }
+
+        function togglePlay() {
+            if (audio.paused) {
+                playMusic();
+            } else {
+                pauseMusic();
+            }
+        }
+
+        btnPlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            togglePlay();
+        });
+
+        discWrapper.addEventListener('click', (e) => {
+            if (musicPlayer.classList.contains('minimized')) {
+                // If minimized, clicking expands it
+                expandPlayer();
+            } else {
+                togglePlay();
+            }
+        });
+
+        btnNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
+            playMusic();
+        });
+
+        btnPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrackIndex);
+            playMusic();
+        });
+
+        // When track ends, play next
+        audio.addEventListener('ended', () => {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
+            playMusic();
+        });
+
+        // Minimize & Maximize Features
+        function minimizePlayer() {
+            musicPlayer.classList.add('minimized');
+            btnMin.innerText = '🗖';
+            btnMin.title = 'Perbesar Pemutar Musik';
+            musicPlayer.title = 'Klik untuk memperbesar pemutar musik';
+        }
+
+        function expandPlayer() {
+            musicPlayer.classList.remove('minimized');
+            btnMin.innerText = '─';
+            btnMin.title = 'Perkecil Pemutar Musik';
+            musicPlayer.title = 'Pemutar Musik';
+        }
+
+        btnMin.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (musicPlayer.classList.contains('minimized')) {
+                expandPlayer();
+            } else {
+                minimizePlayer();
+            }
+        });
+
+        // Clicking anywhere on minimized bubble expands it immediately
+        musicPlayer.addEventListener('click', (e) => {
+            if (musicPlayer.classList.contains('minimized')) {
+                expandPlayer();
+            }
+        });
+
+        // First user interaction auto-play trigger
+        let userInteracted = false;
+        function handleFirstInteraction() {
+            if (!userInteracted) {
+                userInteracted = true;
+                playMusic();
+                window.removeEventListener('click', handleFirstInteraction);
+                window.removeEventListener('keydown', handleFirstInteraction);
+                window.removeEventListener('touchstart', handleFirstInteraction);
+            }
+        }
+
+        window.addEventListener('click', handleFirstInteraction);
+        window.addEventListener('keydown', handleFirstInteraction);
+        window.addEventListener('touchstart', handleFirstInteraction);
+
+        // Hide hint after 6s
+        setTimeout(() => {
+            if (musicHint) musicHint.style.display = 'none';
+        }, 6000);
+    </script>
+</body>
+
+</html>
