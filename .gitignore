@@ -11,3 +11,6 @@ ENV/
 .vscode/
 .idea/
 .DS_Store
+
+# Local duplicate workspace folder
+portfolio-website/
