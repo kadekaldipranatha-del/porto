@@ -161,6 +161,154 @@
             transform: scale(1.12);
         }
 
+        /* ================= EDUCATION TIMELINE ================= */
+        .edu-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .edu-timeline::before {
+            content: '';
+            position: absolute;
+            left: 35px;
+            top: 28px;
+            bottom: 28px;
+            width: 2px;
+            background: linear-gradient(to bottom, #3f3f46, #27272a);
+            border-radius: 2px;
+        }
+
+        .edu-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            background: var(--bg-surface, #141417);
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 10px;
+            position: relative;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .edu-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+        }
+
+        .edu-card-current {
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(56, 189, 248, 0.04);
+        }
+
+        .edu-card-current:hover {
+            border-color: rgba(56, 189, 248, 0.55);
+        }
+
+        .edu-logo-wrap {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+        }
+
+        .edu-logo-wrap svg {
+            display: block;
+            width: 48px;
+            height: 48px;
+        }
+
+        .edu-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .edu-level {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted, #71717a);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .edu-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary, #f4f4f5);
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .edu-sub {
+            font-size: 12px;
+            color: #38bdf8;
+            font-weight: 500;
+        }
+
+        .edu-year {
+            font-size: 11px;
+            color: var(--text-muted, #71717a);
+            font-family: var(--font-mono, monospace);
+        }
+
+        .edu-badge-now {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 1px 7px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .edu-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3f3f46;
+            border: 2px solid #52525b;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+
+        .edu-dot-active {
+            background: #38bdf8;
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 6px rgba(56, 189, 248, 0.5); }
+            50%       { box-shadow: 0 0 14px rgba(56, 189, 248, 0.9); }
+        }
+
+        @media (max-width: 480px) {
+            .edu-name { font-size: 13px; }
+            .edu-logo-wrap { width: 44px; height: 44px; }
+        }
+
         /* ================= MUSIC PLAYER STYLES ================= */
         .floating-player {
             position: fixed;
@@ -575,7 +723,7 @@
                     <div class="gallery-card">
                         <div class="photo-box">
                             <img src="profile.jpg" alt="Foto Diri I Kadek Aldi Pranatha" class="gallery-photo-real" />
-                            <span class="photo-badge">Foto 1</span>
+                            <span class="photo-badge">Galeri</span>
                         </div>
                         <div class="photo-caption">
                             <h4>Foto Diri</h4>
@@ -597,7 +745,7 @@
                                     Systems &amp; Coding</text>
                                 <path d="M30 170 L270 170 L250 180 L50 180 Z" fill="#27272a" />
                             </svg>
-                            <span class="photo-badge">Foto 2</span>
+                            <span class="photo-badge">Galeri</span>
                         </div>
                         <div class="photo-caption">
                             <h4>Kegiatan Akademik & Belajar</h4>
@@ -620,13 +768,107 @@
                                 <path d="M180 170 C180 135, 195 130, 210 130 C225 130, 240 135, 240 170 Z"
                                     fill="#71717a" />
                             </svg>
-                            <span class="photo-badge">Foto 3</span>
+                            <span class="photo-badge">Galeri</span>
                         </div>
                         <div class="photo-caption">
                             <h4>Kegiatan Organisasi / Kelompok</h4>
                             <p>Diskusi kelompok, seminar teknologi, dan kolaborasi tim.</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- SEKSI RIWAYAT PENDIDIKAN -->
+            <section class="section-box">
+                <h2 class="section-title">
+                    <span class="title-icon">🎓</span>
+                    <span>Riwayat Pendidikan</span>
+                </h2>
+
+                <div class="edu-timeline">
+
+                    <!-- SD Triamerta Singaraja -->
+                    <div class="edu-card">
+                        <div class="edu-logo-wrap">
+                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="60" rx="12" fill="#1e3a8a"/>
+                                <polygon points="30,8 54,22 54,24 30,38 6,24 6,22" fill="#fbbf24"/>
+                                <rect x="18" y="28" width="24" height="18" rx="2" fill="#ffffff"/>
+                                <rect x="26" y="34" width="8" height="12" rx="1" fill="#1e3a8a"/>
+                                <rect x="10" y="24" width="4" height="22" rx="1" fill="#fbbf24"/>
+                                <text x="30" y="56" font-size="6" font-family="sans-serif" font-weight="bold" fill="#fbbf24" text-anchor="middle">SD</text>
+                            </svg>
+                        </div>
+                        <div class="edu-info">
+                            <span class="edu-level">Sekolah Dasar</span>
+                            <h3 class="edu-name">SD Triamerta Singaraja</h3>
+                            <span class="edu-year">2009 – 2015</span>
+                        </div>
+                        <div class="edu-dot"></div>
+                    </div>
+
+                    <!-- SMP N 8 Singaraja -->
+                    <div class="edu-card">
+                        <div class="edu-logo-wrap">
+                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="60" rx="12" fill="#065f46"/>
+                                <polygon points="30,7 54,20 54,22 30,35 6,22 6,20" fill="#6ee7b7"/>
+                                <rect x="17" y="27" width="26" height="20" rx="2" fill="#ffffff"/>
+                                <rect x="25" y="33" width="10" height="14" rx="1" fill="#065f46"/>
+                                <rect x="9" y="22" width="4" height="25" rx="1" fill="#6ee7b7"/>
+                                <text x="30" y="56" font-size="5.5" font-family="sans-serif" font-weight="bold" fill="#6ee7b7" text-anchor="middle">SMP</text>
+                            </svg>
+                        </div>
+                        <div class="edu-info">
+                            <span class="edu-level">Sekolah Menengah Pertama</span>
+                            <h3 class="edu-name">SMP Negeri 8 Singaraja</h3>
+                            <span class="edu-year">2015 – 2018</span>
+                        </div>
+                        <div class="edu-dot"></div>
+                    </div>
+
+                    <!-- SMAN 4 Singaraja -->
+                    <div class="edu-card">
+                        <div class="edu-logo-wrap">
+                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="60" rx="12" fill="#7c3aed"/>
+                                <polygon points="30,6 56,20 56,22 30,36 4,22 4,20" fill="#c4b5fd"/>
+                                <rect x="16" y="26" width="28" height="21" rx="2" fill="#ffffff"/>
+                                <rect x="24" y="33" width="12" height="14" rx="1" fill="#7c3aed"/>
+                                <rect x="8" y="22" width="4" height="25" rx="1" fill="#c4b5fd"/>
+                                <text x="30" y="56" font-size="5.5" font-family="sans-serif" font-weight="bold" fill="#c4b5fd" text-anchor="middle">SMA</text>
+                            </svg>
+                        </div>
+                        <div class="edu-info">
+                            <span class="edu-level">Sekolah Menengah Atas</span>
+                            <h3 class="edu-name">SMAN 4 Singaraja</h3>
+                            <span class="edu-year">2018 – 2021</span>
+                        </div>
+                        <div class="edu-dot"></div>
+                    </div>
+
+                    <!-- Universitas -->
+                    <div class="edu-card edu-card-current">
+                        <div class="edu-logo-wrap">
+                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="60" rx="12" fill="#0f172a"/>
+                                <circle cx="30" cy="22" r="14" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                                <polygon points="30,10 54,22 54,25 30,37 6,25 6,22" fill="#38bdf8" opacity="0.85"/>
+                                <rect x="10" y="25" width="4" height="18" rx="1" fill="#38bdf8"/>
+                                <rect x="46" y="25" width="4" height="18" rx="1" fill="#38bdf8"/>
+                                <rect x="7" y="42" width="46" height="4" rx="2" fill="#38bdf8"/>
+                                <text x="30" y="56" font-size="5" font-family="sans-serif" font-weight="bold" fill="#38bdf8" text-anchor="middle">UNDIKSHA</text>
+                            </svg>
+                        </div>
+                        <div class="edu-info">
+                            <span class="edu-level">Perguruan Tinggi &nbsp;<span class="edu-badge-now">Sekarang</span></span>
+                            <h3 class="edu-name">Universitas Pendidikan Ganesha</h3>
+                            <span class="edu-sub">S1 Sistem Informasi</span>
+                            <span class="edu-year">2025 – sekarang</span>
+                        </div>
+                        <div class="edu-dot edu-dot-active"></div>
+                    </div>
+
                 </div>
             </section>
 
