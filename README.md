@@ -2,7 +2,7 @@
 
 Website portofolio dan biodata interaktif untuk **I Kadek Aldi Pranatha** (Mahasiswa S1 Sistem Informasi).
 
-🔗 **Live Demo:** [https://kadekaldipranatha-del.github.io/porto/](https://kadekaldipranatha-del.github.io/porto/)
+🔗 **Live Website:** [https://kadekaldipranatha-del.github.io/porto/](https://kadekaldipranatha-del.github.io/porto/)
 
 ---
 
