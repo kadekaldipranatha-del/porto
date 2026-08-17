@@ -1,4 +1,3 @@
-22
 <!DOCTYPE html>
 <html lang="id">
 
@@ -61,6 +60,105 @@
 
         .status-pill {
             z-index: 2;
+        }
+
+        /* ================= PROFILE LIGHTBOX ================= */
+        .avatar-box {
+            cursor: pointer;
+        }
+
+        .avatar-box::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.25s ease;
+            pointer-events: none;
+        }
+
+        .avatar-box:hover::after {
+            background: rgba(0, 0, 0, 0.28);
+        }
+
+        .avatar-zoom-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.6);
+            color: #ffffff;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .avatar-box:hover .avatar-zoom-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Lightbox Overlay */
+        #profile-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        #profile-lightbox.open {
+            display: flex;
+            animation: lbFadeIn 0.22s ease;
+        }
+
+        @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        #profile-lightbox img {
+            max-width: min(500px, 88vw);
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9);
+            animation: lbSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+        }
+
+        @keyframes lbSlideUp {
+            from { opacity: 0; transform: scale(0.86) translateY(28px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        #lb-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            color: #ffffff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        #lb-close:hover {
+            background: rgba(255, 255, 255, 0.24);
+            transform: scale(1.12);
         }
 
         /* ================= MUSIC PLAYER STYLES ================= */
@@ -366,12 +464,12 @@
             <header class="card-header">
                 <div class="avatar-container">
                     <div class="avatar-ring">
-                        <!-- Foto Profil Asli -->
-                        <div class="avatar-box">
+                        <!-- Foto Profil Asli — klik untuk tampilkan full -->
+                        <div class="avatar-box" onclick="openProfileLightbox()" title="Klik untuk lihat foto">
                             <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" class="avatar-img" />
+                            <span class="avatar-zoom-icon">&#128269;</span>
                         </div>
                     </div>
-                    <span class="status-pill">Mahasiswa Baru</span>
                 </div>
 
                 <h1 class="main-name">I Kadek Aldi Pranatha</h1>
@@ -826,6 +924,26 @@
         setTimeout(() => {
             if (musicHint) musicHint.style.display = 'none';
         }, 6000);
+    </script>
+
+    <!-- ===== PROFILE PHOTO LIGHTBOX ===== -->
+    <div id="profile-lightbox" onclick="closeProfileLightbox()" role="dialog" aria-modal="true" aria-label="Foto Profil">
+        <button id="lb-close" onclick="event.stopPropagation(); closeProfileLightbox()" title="Tutup (Esc)">&#10005;</button>
+        <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" onclick="event.stopPropagation()" />
+    </div>
+
+    <script>
+        function openProfileLightbox() {
+            document.getElementById('profile-lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeProfileLightbox() {
+            document.getElementById('profile-lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeProfileLightbox();
+        });
     </script>
 </body>
 
