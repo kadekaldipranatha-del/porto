@@ -119,8 +119,13 @@
         }
 
         @keyframes lbFadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         #profile-lightbox img {
@@ -134,8 +139,15 @@
         }
 
         @keyframes lbSlideUp {
-            from { opacity: 0; transform: scale(0.86) translateY(28px); }
-            to   { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.86) translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         #lb-close {
@@ -188,16 +200,16 @@
             padding: 16px 18px;
             border-radius: 14px;
             background: var(--bg-surface, #141417);
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             margin-bottom: 10px;
             position: relative;
             transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .edu-card:hover {
-            border-color: rgba(255,255,255,0.15);
+            border-color: rgba(255, 255, 255, 0.15);
             transform: translateX(4px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
         .edu-card-current {
@@ -218,7 +230,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
         }
 
         .edu-logo-wrap svg {
@@ -300,13 +312,26 @@
         }
 
         @keyframes dotPulse {
-            0%, 100% { box-shadow: 0 0 6px rgba(56, 189, 248, 0.5); }
-            50%       { box-shadow: 0 0 14px rgba(56, 189, 248, 0.9); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+            }
         }
 
         @media (max-width: 480px) {
-            .edu-name { font-size: 13px; }
-            .edu-logo-wrap { width: 44px; height: 44px; }
+            .edu-name {
+                font-size: 13px;
+            }
+
+            .edu-logo-wrap {
+                width: 44px;
+                height: 44px;
+            }
         }
 
         /* ================= MUSIC PLAYER STYLES ================= */
@@ -789,87 +814,126 @@
 
                     <!-- SD Triamerta Singaraja -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap">
+                        <div class="edu-logo-wrap" style="background:#fff8e1;">
                             <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="12" fill="#1e3a8a"/>
-                                <polygon points="30,8 54,22 54,24 30,38 6,24 6,22" fill="#fbbf24"/>
-                                <rect x="18" y="28" width="24" height="18" rx="2" fill="#ffffff"/>
-                                <rect x="26" y="34" width="8" height="12" rx="1" fill="#1e3a8a"/>
-                                <rect x="10" y="24" width="4" height="22" rx="1" fill="#fbbf24"/>
-                                <text x="30" y="56" font-size="6" font-family="sans-serif" font-weight="bold" fill="#fbbf24" text-anchor="middle">SD</text>
+                                <!-- Bingkai kuning hangat -->
+                                <rect width="60" height="60" rx="13" fill="#f59e0b" />
+                                <!-- Bintang Garuda kecil di atas -->
+                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#ffffff" />
+                                <!-- Gedung sekolah -->
+                                <rect x="10" y="28" width="40" height="22" rx="2" fill="#ffffff" />
+                                <!-- Atap segitiga -->
+                                <polygon points="8,29 30,18 52,29" fill="#b45309" />
+                                <!-- Pintu -->
+                                <rect x="25" y="38" width="10" height="12" rx="1" fill="#f59e0b" />
+                                <!-- Jendela kiri -->
+                                <rect x="13" y="32" width="7" height="6" rx="1" fill="#fde68a" />
+                                <!-- Jendela kanan -->
+                                <rect x="40" y="32" width="7" height="6" rx="1" fill="#fde68a" />
+                                <!-- Teks SD -->
+                                <text x="30" y="58" font-size="5.5" font-family="Arial,sans-serif" font-weight="bold" fill="#fff8e1" text-anchor="middle">SD</text>
                             </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Dasar</span>
                             <h3 class="edu-name">SD Triamerta Singaraja</h3>
-                            <span class="edu-year">2009 – 2015</span>
+                            <span class="edu-year">2014 – 2020</span>
                         </div>
                         <div class="edu-dot"></div>
                     </div>
 
                     <!-- SMP N 8 Singaraja -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap">
+                        <div class="edu-logo-wrap" style="background:#ecfdf5;">
                             <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="12" fill="#065f46"/>
-                                <polygon points="30,7 54,20 54,22 30,35 6,22 6,20" fill="#6ee7b7"/>
-                                <rect x="17" y="27" width="26" height="20" rx="2" fill="#ffffff"/>
-                                <rect x="25" y="33" width="10" height="14" rx="1" fill="#065f46"/>
-                                <rect x="9" y="22" width="4" height="25" rx="1" fill="#6ee7b7"/>
-                                <text x="30" y="56" font-size="5.5" font-family="sans-serif" font-weight="bold" fill="#6ee7b7" text-anchor="middle">SMP</text>
+                                <!-- Bingkai hijau -->
+                                <rect width="60" height="60" rx="13" fill="#10b981" />
+                                <!-- Bintang kecil -->
+                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#ffffff" />
+                                <!-- Gedung -->
+                                <rect x="9" y="27" width="42" height="23" rx="2" fill="#ffffff" />
+                                <!-- Atap -->
+                                <polygon points="7,28 30,16 53,28" fill="#065f46" />
+                                <!-- Pintu -->
+                                <rect x="24" y="37" width="12" height="13" rx="1" fill="#10b981" />
+                                <!-- Jendela kiri -->
+                                <rect x="12" y="31" width="7" height="5" rx="1" fill="#a7f3d0" />
+                                <!-- Jendela kanan -->
+                                <rect x="41" y="31" width="7" height="5" rx="1" fill="#a7f3d0" />
+                                <!-- Teks SMP -->
+                                <text x="30" y="58" font-size="5" font-family="Arial,sans-serif" font-weight="bold" fill="#ecfdf5" text-anchor="middle">SMP N 8</text>
                             </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Menengah Pertama</span>
                             <h3 class="edu-name">SMP Negeri 8 Singaraja</h3>
-                            <span class="edu-year">2015 – 2018</span>
+                            <span class="edu-year">2020 – 2023</span>
                         </div>
                         <div class="edu-dot"></div>
                     </div>
 
-                    <!-- SMAN 4 Singaraja -->
+                    <!-- SMAN 4 Singaraja — logo via website resmi -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap">
-                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="12" fill="#7c3aed"/>
-                                <polygon points="30,6 56,20 56,22 30,36 4,22 4,20" fill="#c4b5fd"/>
-                                <rect x="16" y="26" width="28" height="21" rx="2" fill="#ffffff"/>
-                                <rect x="24" y="33" width="12" height="14" rx="1" fill="#7c3aed"/>
-                                <rect x="8" y="22" width="4" height="25" rx="1" fill="#c4b5fd"/>
-                                <text x="30" y="56" font-size="5.5" font-family="sans-serif" font-weight="bold" fill="#c4b5fd" text-anchor="middle">SMA</text>
+                        <div class="edu-logo-wrap" style="background:#f5f3ff; padding:4px;">
+                            <img
+                                src="https://sman4singaraja.sch.id/assets/img/logo.png"
+                                alt="Logo SMAN 4 Singaraja"
+                                width="44" height="44"
+                                style="object-fit:contain; border-radius:8px;"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                            />
+                            <!-- Fallback SVG jika gambar gagal dimuat -->
+                            <svg viewBox="0 0 60 60" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                                <rect width="60" height="60" rx="13" fill="#7c3aed" />
+                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#c4b5fd" />
+                                <rect x="9" y="26" width="42" height="24" rx="2" fill="#ffffff" />
+                                <polygon points="7,27 30,15 53,27" fill="#4c1d95" />
+                                <rect x="24" y="37" width="12" height="13" rx="1" fill="#7c3aed" />
+                                <rect x="12" y="30" width="7" height="5" rx="1" fill="#ddd6fe" />
+                                <rect x="41" y="30" width="7" height="5" rx="1" fill="#ddd6fe" />
+                                <text x="30" y="58" font-size="5.5" font-family="Arial,sans-serif" font-weight="bold" fill="#f5f3ff" text-anchor="middle">SMAN 4</text>
                             </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Menengah Atas</span>
                             <h3 class="edu-name">SMAN 4 Singaraja</h3>
-                            <span class="edu-year">2018 – 2021</span>
+                            <span class="edu-year">2023 – 2026</span>
                         </div>
                         <div class="edu-dot"></div>
                     </div>
 
-                    <!-- Universitas -->
+                    <!-- Universitas Pendidikan Ganesha — logo via Wikipedia -->
                     <div class="edu-card edu-card-current">
-                        <div class="edu-logo-wrap">
-                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="60" rx="12" fill="#0f172a"/>
-                                <circle cx="30" cy="22" r="14" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
-                                <polygon points="30,10 54,22 54,25 30,37 6,25 6,22" fill="#38bdf8" opacity="0.85"/>
-                                <rect x="10" y="25" width="4" height="18" rx="1" fill="#38bdf8"/>
-                                <rect x="46" y="25" width="4" height="18" rx="1" fill="#38bdf8"/>
-                                <rect x="7" y="42" width="46" height="4" rx="2" fill="#38bdf8"/>
-                                <text x="30" y="56" font-size="5" font-family="sans-serif" font-weight="bold" fill="#38bdf8" text-anchor="middle">UNDIKSHA</text>
+                        <div class="edu-logo-wrap" style="background:#f0f9ff; padding:4px;">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/id/b/bd/Undiksha.png"
+                                alt="Logo Universitas Pendidikan Ganesha"
+                                width="44" height="44"
+                                style="object-fit:contain; border-radius:8px;"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                            />
+                            <!-- Fallback SVG -->
+                            <svg viewBox="0 0 60 60" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                                <rect width="60" height="60" rx="13" fill="#0f172a" />
+                                <circle cx="30" cy="24" r="13" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+                                <polygon points="30,12 52,24 52,27 30,39 8,27 8,24" fill="#38bdf8" opacity="0.85" />
+                                <rect x="11" y="27" width="4" height="16" rx="1" fill="#38bdf8" />
+                                <rect x="45" y="27" width="4" height="16" rx="1" fill="#38bdf8" />
+                                <rect x="8" y="42" width="44" height="4" rx="2" fill="#38bdf8" />
+                                <text x="30" y="56" font-size="4.5" font-family="Arial,sans-serif" font-weight="bold" fill="#38bdf8" text-anchor="middle">UNDIKSHA</text>
                             </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Perguruan Tinggi &nbsp;<span class="edu-badge-now">Sekarang</span></span>
                             <h3 class="edu-name">Universitas Pendidikan Ganesha</h3>
                             <span class="edu-sub">S1 Sistem Informasi</span>
-                            <span class="edu-year">2025 – sekarang</span>
+                            <span class="edu-year">2026 – sekarang</span>
                         </div>
                         <div class="edu-dot edu-dot-active"></div>
                     </div>
 
                 </div>
+
             </section>
 
             <!-- SEKSI 4: TAUTAN & KONTAK AKTIF -->
@@ -1169,8 +1233,10 @@
     </script>
 
     <!-- ===== PROFILE PHOTO LIGHTBOX ===== -->
-    <div id="profile-lightbox" onclick="closeProfileLightbox()" role="dialog" aria-modal="true" aria-label="Foto Profil">
-        <button id="lb-close" onclick="event.stopPropagation(); closeProfileLightbox()" title="Tutup (Esc)">&#10005;</button>
+    <div id="profile-lightbox" onclick="closeProfileLightbox()" role="dialog" aria-modal="true"
+        aria-label="Foto Profil">
+        <button id="lb-close" onclick="event.stopPropagation(); closeProfileLightbox()"
+            title="Tutup (Esc)">&#10005;</button>
         <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" onclick="event.stopPropagation()" />
     </div>
 
@@ -1183,7 +1249,7 @@
             document.getElementById('profile-lightbox').classList.remove('open');
             document.body.style.overflow = '';
         }
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeProfileLightbox();
         });
     </script>
