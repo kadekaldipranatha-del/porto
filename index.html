@@ -706,7 +706,7 @@
                     <div class="avatar-ring">
                         <!-- Foto Profil Asli — klik untuk tampilkan full -->
                         <div class="avatar-box" onclick="openProfileLightbox()" title="Klik untuk lihat foto">
-                            <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" class="avatar-img" />
+                            <img src="img/profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" class="avatar-img" />
                             <span class="avatar-zoom-icon">&#128269;</span>
                         </div>
                     </div>
@@ -810,28 +810,28 @@
                 </h2>
 
                 <div class="photo-grid-5">
-                    <!-- Foto 1 -->
-                    <div class="pgrid-item pgrid-item--large">
-                        <img src="profile.jpg" alt="Foto 1" class="pgrid-img" />
+                    <!-- Foto 1 (Foto Awal) -->
+                    <div class="pgrid-item pgrid-item--large" onclick="openPhotoLightbox('img/foto1.jpg', 'Foto Galeri 1')" style="cursor:pointer;" title="Klik untuk memperbesar">
+                        <img src="img/foto1.jpg" alt="Foto Galeri 1" class="pgrid-img" />
                     </div>
-                    <!-- Foto 2 -->
-                    <div class="pgrid-item">
-                        <img src="foto2.jpg" alt="Foto 2" class="pgrid-img"
+                    <!-- Foto 2 (Detraxion) -->
+                    <div class="pgrid-item" onclick="openPhotoLightbox('img/foto2.jpg', 'Foto Kegiatan SMAN 4 Singaraja')" style="cursor:pointer;" title="Klik untuk memperbesar">
+                        <img src="img/foto2.jpg" alt="Foto Kegiatan" class="pgrid-img"
                             onerror="this.closest('.pgrid-item').classList.add('pgrid-empty')" />
                     </div>
-                    <!-- Foto 3 -->
-                    <div class="pgrid-item">
-                        <img src="foto3.jpg" alt="Foto 3" class="pgrid-img"
+                    <!-- Foto 3 (Foursma) -->
+                    <div class="pgrid-item" onclick="openPhotoLightbox('img/foto3.jpg', 'Foto Bersama SMAN 4 Singaraja')" style="cursor:pointer;" title="Klik untuk memperbesar">
+                        <img src="img/foto3.jpg" alt="Foto Bersama" class="pgrid-img"
                             onerror="this.closest('.pgrid-item').classList.add('pgrid-empty')" />
                     </div>
                     <!-- Foto 4 -->
                     <div class="pgrid-item">
-                        <img src="foto4.jpg" alt="Foto 4" class="pgrid-img"
+                        <img src="img/foto4.jpg" alt="Foto 4" class="pgrid-img"
                             onerror="this.closest('.pgrid-item').classList.add('pgrid-empty')" />
                     </div>
                     <!-- Foto 5 -->
                     <div class="pgrid-item">
-                        <img src="foto5.jpg" alt="Foto 5" class="pgrid-img"
+                        <img src="img/foto5.jpg" alt="Foto 5" class="pgrid-img"
                             onerror="this.closest('.pgrid-item').classList.add('pgrid-empty')" />
                     </div>
                 </div>
@@ -849,25 +849,12 @@
 
                     <!-- SD Triamerta Singaraja -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap" style="background:#fff8e1;">
-                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Bingkai kuning hangat -->
-                                <rect width="60" height="60" rx="13" fill="#f59e0b" />
-                                <!-- Bintang Garuda kecil di atas -->
-                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#ffffff" />
-                                <!-- Gedung sekolah -->
-                                <rect x="10" y="28" width="40" height="22" rx="2" fill="#ffffff" />
-                                <!-- Atap segitiga -->
-                                <polygon points="8,29 30,18 52,29" fill="#b45309" />
-                                <!-- Pintu -->
-                                <rect x="25" y="38" width="10" height="12" rx="1" fill="#f59e0b" />
-                                <!-- Jendela kiri -->
-                                <rect x="13" y="32" width="7" height="6" rx="1" fill="#fde68a" />
-                                <!-- Jendela kanan -->
-                                <rect x="40" y="32" width="7" height="6" rx="1" fill="#fde68a" />
-                                <!-- Teks SD -->
-                                <text x="30" y="58" font-size="5.5" font-family="Arial,sans-serif" font-weight="bold" fill="#fff8e1" text-anchor="middle">SD</text>
-                            </svg>
+                        <div class="edu-logo-wrap" style="background:#ffffff; padding:4px;">
+                            <img
+                                src="img/sd_triamerta_logo.png"
+                                alt="Logo SD Triamerta Singaraja"
+                                style="width:100%; height:100%; object-fit:contain; border-radius:10px;"
+                            />
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Dasar</span>
@@ -879,25 +866,12 @@
 
                     <!-- SMP N 8 Singaraja -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap" style="background:#ecfdf5;">
-                            <svg viewBox="0 0 60 60" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Bingkai hijau -->
-                                <rect width="60" height="60" rx="13" fill="#10b981" />
-                                <!-- Bintang kecil -->
-                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#ffffff" />
-                                <!-- Gedung -->
-                                <rect x="9" y="27" width="42" height="23" rx="2" fill="#ffffff" />
-                                <!-- Atap -->
-                                <polygon points="7,28 30,16 53,28" fill="#065f46" />
-                                <!-- Pintu -->
-                                <rect x="24" y="37" width="12" height="13" rx="1" fill="#10b981" />
-                                <!-- Jendela kiri -->
-                                <rect x="12" y="31" width="7" height="5" rx="1" fill="#a7f3d0" />
-                                <!-- Jendela kanan -->
-                                <rect x="41" y="31" width="7" height="5" rx="1" fill="#a7f3d0" />
-                                <!-- Teks SMP -->
-                                <text x="30" y="58" font-size="5" font-family="Arial,sans-serif" font-weight="bold" fill="#ecfdf5" text-anchor="middle">SMP N 8</text>
-                            </svg>
+                        <div class="edu-logo-wrap" style="background:#ffffff; padding:4px;">
+                            <img
+                                src="img/smpn8_logo.png"
+                                alt="Logo SMP Negeri 8 Singaraja"
+                                style="width:100%; height:100%; object-fit:contain; border-radius:10px;"
+                            />
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Menengah Pertama</span>
@@ -907,27 +881,14 @@
                         <div class="edu-dot"></div>
                     </div>
 
-                    <!-- SMAN 4 Singaraja — logo via website resmi -->
+                    <!-- SMAN 4 Singaraja -->
                     <div class="edu-card">
-                        <div class="edu-logo-wrap" style="background:#f5f3ff; padding:4px;">
+                        <div class="edu-logo-wrap" style="background:#ffffff; padding:4px;">
                             <img
-                                src="https://sman4singaraja.sch.id/assets/img/logo.png"
+                                src="img/sman4_logo.png"
                                 alt="Logo SMAN 4 Singaraja"
-                                width="44" height="44"
-                                style="object-fit:contain; border-radius:8px;"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                                style="width:100%; height:100%; object-fit:contain; border-radius:10px;"
                             />
-                            <!-- Fallback SVG jika gambar gagal dimuat -->
-                            <svg viewBox="0 0 60 60" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-                                <rect width="60" height="60" rx="13" fill="#7c3aed" />
-                                <polygon points="30,4 32.3,10.8 39.5,10.8 33.9,14.9 36.2,21.7 30,17.6 23.8,21.7 26.1,14.9 20.5,10.8 27.7,10.8" fill="#c4b5fd" />
-                                <rect x="9" y="26" width="42" height="24" rx="2" fill="#ffffff" />
-                                <polygon points="7,27 30,15 53,27" fill="#4c1d95" />
-                                <rect x="24" y="37" width="12" height="13" rx="1" fill="#7c3aed" />
-                                <rect x="12" y="30" width="7" height="5" rx="1" fill="#ddd6fe" />
-                                <rect x="41" y="30" width="7" height="5" rx="1" fill="#ddd6fe" />
-                                <text x="30" y="58" font-size="5.5" font-family="Arial,sans-serif" font-weight="bold" fill="#f5f3ff" text-anchor="middle">SMAN 4</text>
-                            </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Sekolah Menengah Atas</span>
@@ -937,26 +898,14 @@
                         <div class="edu-dot"></div>
                     </div>
 
-                    <!-- Universitas Pendidikan Ganesha — logo via Wikipedia -->
+                    <!-- Universitas Pendidikan Ganesha -->
                     <div class="edu-card edu-card-current">
-                        <div class="edu-logo-wrap" style="background:#f0f9ff; padding:4px;">
+                        <div class="edu-logo-wrap" style="background:#ffffff; padding:4px;">
                             <img
-                                src="https://upload.wikimedia.org/wikipedia/id/b/bd/Undiksha.png"
+                                src="img/undiksha_logo.png"
                                 alt="Logo Universitas Pendidikan Ganesha"
-                                width="44" height="44"
-                                style="object-fit:contain; border-radius:8px;"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                                style="width:100%; height:100%; object-fit:contain; border-radius:10px;"
                             />
-                            <!-- Fallback SVG -->
-                            <svg viewBox="0 0 60 60" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style="display:none;">
-                                <rect width="60" height="60" rx="13" fill="#0f172a" />
-                                <circle cx="30" cy="24" r="13" fill="none" stroke="#38bdf8" stroke-width="2.5" />
-                                <polygon points="30,12 52,24 52,27 30,39 8,27 8,24" fill="#38bdf8" opacity="0.85" />
-                                <rect x="11" y="27" width="4" height="16" rx="1" fill="#38bdf8" />
-                                <rect x="45" y="27" width="4" height="16" rx="1" fill="#38bdf8" />
-                                <rect x="8" y="42" width="44" height="4" rx="2" fill="#38bdf8" />
-                                <text x="30" y="56" font-size="4.5" font-family="Arial,sans-serif" font-weight="bold" fill="#38bdf8" text-anchor="middle">UNDIKSHA</text>
-                            </svg>
                         </div>
                         <div class="edu-info">
                             <span class="edu-level">Perguruan Tinggi &nbsp;<span class="edu-badge-now">Sekarang</span></span>
@@ -1272,13 +1221,20 @@
         aria-label="Foto Profil">
         <button id="lb-close" onclick="event.stopPropagation(); closeProfileLightbox()"
             title="Tutup (Esc)">&#10005;</button>
-        <img src="profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" onclick="event.stopPropagation()" />
+        <img src="img/profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" onclick="event.stopPropagation()" />
     </div>
 
     <script>
-        function openProfileLightbox() {
-            document.getElementById('profile-lightbox').classList.add('open');
+        function openPhotoLightbox(src, alt) {
+            const lb = document.getElementById('profile-lightbox');
+            const img = lb.querySelector('img');
+            if (src) img.src = src;
+            if (alt) img.alt = alt;
+            lb.classList.add('open');
             document.body.style.overflow = 'hidden';
+        }
+        function openProfileLightbox() {
+            openPhotoLightbox('img/profile.jpg', 'Foto Profil I Kadek Aldi Pranatha');
         }
         function closeProfileLightbox() {
             document.getElementById('profile-lightbox').classList.remove('open');
