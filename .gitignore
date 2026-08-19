@@ -1,16 +1,23 @@
-# Python
+# Python & Scripts
 __pycache__/
 *.py[cod]
 *$py.class
+*.py
 *.env
 .venv/
 venv/
 ENV/
+the_cure_python_lyrics/
 
-# IDE / Editor
+# Audio
+*.mp3
+*.wav
+
+# IDE / Editor / System
 .vscode/
 .idea/
 .DS_Store
+Thumbs.db
 
-# Local duplicate workspace folder
+# Extra workspace directories
 portfolio-website/
