@@ -126,17 +126,6 @@
             display: block;
         }
 
-        .lb-box .lb-caption {
-            margin-top: 12px;
-            color: #e4e4e7;
-            font-size: 13px;
-            font-weight: 500;
-            background: rgba(24, 24, 27, 0.85);
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         @keyframes lbFadeIn {
             from {
                 opacity: 0;
@@ -185,12 +174,12 @@
             color: #ffffff;
         }
 
-        /* ================= PHOTO GRID ================= */
-        .photo-grid-5 {
+        /* ================= PHOTO GRID (3 PHOTOS) ================= */
+        .photo-grid-3 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 10px;
+            grid-template-columns: 1.15fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px;
         }
 
         .pgrid-item {
@@ -223,23 +212,8 @@
             transform: scale(1.05);
         }
 
-        .pgrid-empty {
-            background: var(--bg-surface, #141417);
-            border: 2px dashed rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: default;
-        }
-
-        .pgrid-empty::after {
-            content: '＋';
-            font-size: 28px;
-            color: rgba(255, 255, 255, 0.15);
-        }
-
         @media (max-width: 500px) {
-            .photo-grid-5 {
+            .photo-grid-3 {
                 grid-template-columns: 1fr 1fr;
             }
 
@@ -521,7 +495,7 @@
                     <span>Galeri Foto</span>
                 </h2>
 
-                <div class="photo-grid-5">
+                <div class="photo-grid-3">
                     <!-- Foto 1 (Foto Awal) -->
                     <a href="#lb-foto1" class="pgrid-item pgrid-item--large" title="Klik untuk memperbesar">
                         <img src="img/foto1.jpg" alt="Foto Galeri 1" class="pgrid-img" />
@@ -534,10 +508,6 @@
                     <a href="#lb-foto3" class="pgrid-item" title="Klik untuk memperbesar">
                         <img src="img/foto3.jpg" alt="Foto Bersama SMAN 4 Singaraja" class="pgrid-img" />
                     </a>
-                    <!-- Foto 4 (Slot Kosong) -->
-                    <div class="pgrid-item pgrid-empty" title="Slot Foto"></div>
-                    <!-- Foto 5 (Slot Kosong) -->
-                    <div class="pgrid-item pgrid-empty" title="Slot Foto"></div>
                 </div>
             </section>
 
@@ -670,7 +640,6 @@
         <div class="lb-box">
             <a href="#!" class="lb-close" title="Tutup">&#10005;</a>
             <img src="img/profile.jpg" alt="Foto Profil I Kadek Aldi Pranatha" />
-            <span class="lb-caption">Foto Profil — I Kadek Aldi Pranatha</span>
         </div>
     </div>
 
@@ -680,7 +649,6 @@
         <div class="lb-box">
             <a href="#!" class="lb-close" title="Tutup">&#10005;</a>
             <img src="img/foto1.jpg" alt="Foto Galeri 1" />
-            <span class="lb-caption">Foto Galeri 1</span>
         </div>
     </div>
 
@@ -690,7 +658,6 @@
         <div class="lb-box">
             <a href="#!" class="lb-close" title="Tutup">&#10005;</a>
             <img src="img/foto2.jpg" alt="Foto Kegiatan SMAN 4 Singaraja" />
-            <span class="lb-caption">Foto Kegiatan SMAN 4 Singaraja</span>
         </div>
     </div>
 
@@ -700,7 +667,6 @@
         <div class="lb-box">
             <a href="#!" class="lb-close" title="Tutup">&#10005;</a>
             <img src="img/foto3.jpg" alt="Foto Bersama SMAN 4 Singaraja" />
-            <span class="lb-caption">Foto Bersama SMAN 4 Singaraja</span>
         </div>
     </div>
 
