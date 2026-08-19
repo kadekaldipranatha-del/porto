@@ -46,7 +46,7 @@ porto/
 ---
 
 ## 💻 Menjalankan Secara Lokal
-Cukup buka file `index.html` langsung di browser Anda, atau gunakan Live Server / Python HTTP Server:
+Cukup buka file `index.html` langsung di browser Anda, atau jalankan server lokal:
 
 ```bash
 # Menggunakan python http server
